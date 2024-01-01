@@ -1,0 +1,36 @@
+ALGORITHME AnalysePhraseFichier
+    
+    
+    VAR
+        LongPhrase : INTEGER:=0 ; 
+        NreMots : INTEGER:=0 ; 
+        NbreVoyelles : INTEGER:=0 ; 
+        Charlu  : CHAR:= LIRE_CARACTERE_DU_FICHIER("Fichier.txt"); 
+        Charlu :=  LIRE_CARACTERE_DU_FICHIER("Fichier.txt")
+        Charlu_SUIVANT =  LIRE_CARACTERE_DU_FICHIER("Fichier.txt")
+    DEBUT
+        TANT_QUE ((Charlu PAS '.')  ET (Charlu PAS 'ENDOF'))  // caractere N'EST PAS LE_POINT ET NON_FIN_DU_FICHIER
+            // Incrémenter la longueur de la phrase pour chaque caractère
+            LongPhrase  :=  LongPhrase + 1
+
+            // Si le caractère est une lettre et le caractère suivant est un espace ou le point
+            IF (EST_LETTRE(Charlu) ET (Charlu_SUIVANT := ' ' OU Charlu_SUIVANT = '.')) THEN
+                // Incrémenter le nombre de mots
+                NreMots := NreMots + 1
+            END_IF
+            // Si le caractère est une voyelle
+            IF EST_VOYELLE(Charlu) THEN
+                // Incrémenter le nombre de voyelles
+                NbreVoyelles  := NbreVoyelles  + 1;
+            END_IF 
+            // Lire le caractère suivant du fichier
+            Charlu         :=  Charlu_SUIVANT 
+            Charlu_SUIVANT :=  LIRE_CARACTERE_DU_FICHIER("Fichier.txt")
+
+        FIN_TANT_QUE
+
+        // Afficher les résultats
+        AFFICHER "Longueur de la phrase :", LongPhrase
+        AFFICHER "Nombre de mots dans la phrase :", NreMots
+        AFFICHER "Nombre de voyelles dans la phrase :", NbreVoyelles
+    FIN
